@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        header {
+            display: flex;
+            justify-content: space-between; /* Space between title and navigation */
+            align-items: center; /* Align items vertically */
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            padding: 0 10px; /* Spacing between navigation items */
+        }
+        nav ul li a {
+            text-decoration: none; /* Optional: removes underline from links */
+        }
+        /* Optional: style for active/current page link */
+        nav ul li a.active {
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <header class="container">
+        <h1>About This Website</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="visualization.html">Visualization</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <section>
+            <h2>About This Website</h2>
+            <p>What is the project about, who we are.</p>
+            <img src="Images/Screenshot 2024-04-11 at 8.58.55 PM.png" alt="A random screenshot just to see if it works">
+        </section>
+    </main>
+    <footer class="container">
+        <small>© 2024 All rights reserved.</small>
+    </footer>
+</body>
+</html>
