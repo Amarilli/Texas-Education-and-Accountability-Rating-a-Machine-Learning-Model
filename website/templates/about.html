@@ -34,9 +34,9 @@
         <h1>Project Overview</h1>
         <nav>
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="visualization.html">Visualization</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="{{ url_for('index') }}" class="{{ 'active' if request.path == '/' else '' }}">Home</a></li>
+                <li><a href="{{ url_for('visualization') }}" class="{{ 'active' if request.path == '/visualization' else '' }}">Visualization</a></li>
+                <li><a href="{{ url_for('about') }}" class="{{ 'active' if request.path == '/about' else '' }}">About</a></li>
             </ul>
         </nav>
     </header>
@@ -53,7 +53,7 @@
                 
                 Our team is undertaking a challenging task: investigating the feasibility of predicting a school's accountability rating using a custom MongoDB database and Machine Learning. <br>
                 This complex and intricate endeavor requires our collective expertise and dedication.</p>
-            <img src="Images/mltexas.jpeg" alt="ML and Texas according to ChatGPT">
+            <img src="{{ url_for('static', filename='images/mltexas.jpeg') }}" alt="ML and Texas according to ChatGPT">
         </section>
     </main>
     <footer class="container">

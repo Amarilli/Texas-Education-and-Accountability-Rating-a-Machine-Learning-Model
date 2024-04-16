@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualization</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="/static/js/main.js" defer></script>
+    
     <style>
         header {
             display: flex;
@@ -37,20 +40,15 @@
         <h1>Visualization</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="visualization.html" style="color: blue; font-weight: bold;">Visualization</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('visualization') }}" style="color: blue; font-weight: bold;">Visualization</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
             </ul>
         </nav>
     </header>
     <main class="container">
-        <section>
-            <h2>Data Visualizations</h2>
-            <p>Below are the visualizations that represent our data:</p>
-            <div>
-                <img src="Images/model.png" alt="Visualization" style="width: 600px; height: auto;">
-            </div>
-        </section>
+        <h2>Data Visualizations</h2>
+        <div id="visualization"></div>
     </main>
     <footer class="container">
         <small>© 2024 Website. All rights reserved.</small>
