@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualization</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="/static/js/main.js" defer></script>
+    
+    <style>
+        header {
+            display: flex;
+            justify-content: space-between; /* Space between title and navigation */
+            align-items: center; /* Align items vertically */
+            padding-bottom: 20px; /* Adds some space below the header */
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            margin-left: 10px; /* Adds space between nav items */
+        }
+        nav ul li a {
+            text-decoration: none; /* Removes underline from links */
+            color: inherit; /* Keeps the link color consistent with the text */
+            font-weight: normal; /* Normal font weight */
+        }
+        nav ul li a:hover {
+            color: #007BFF; /* Change color on hover */
+            font-weight: bold; /* Bold on hover */
+        }
+    </style>
+</head>
+<body>
+    <header class="container">
+        <h1>Visualization</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('visualization') }}" style="color: blue; font-weight: bold;">Visualization</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <h2>Data Visualizations</h2>
+        <div id="visualization"></div>
+    </main>
+    <footer class="container">
+        <small>© 2024 Website. All rights reserved.</small>
+    </footer>
+</body>
+</html>
