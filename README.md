@@ -24,13 +24,15 @@ Our team is undertaking a challenging task: investigating the feasibility of pre
 
 [Texas Education Agency Statistics ](https://rptsvr1.tea.texas.gov/perfreport/snapshot/download.html)
 
+[2023 Texas Accountability System](https://tea.texas.gov/texas-schools/accountability/academic-accountability/performance-reporting/2023-accountability-system)
+
 ### Break Down of Task:
 
     Mariah: Machine Learning Model.
     James: .
     Kelsey: MongoDB.
     Amarilli: Website, README. 
-    Hisako: .
+    Hisako: Tableau's visualizations.
 
 
 ### Development
