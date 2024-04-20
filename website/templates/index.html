@@ -4,107 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-    <title>Texas School Accountability Prediction</title>
+    <title>Predictor for Texas School Accountability Ratings</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f7f6; /* Subtle background color */
+        }
         header {
             display: flex;
-            justify-content: space-between; /* Space between the title and the navigation */
-            align-items: center; /* Align items vertically in the center */
-            padding-bottom: 20px; /* Adds some space below the header */
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        nav {
-            display: flex;
+        header h1 {
+            margin: 0;
+            font-size: 32px;
         }
         nav ul {
-            display: flex;
             list-style: none;
-            margin: 0;
             padding: 0;
         }
         nav ul li {
-            margin-left: 10px; /* Space between nav items */
+            display: inline;
+            margin-left: 20px;
         }
         nav ul li a {
-            text-decoration: none; /* Removes underline from links */
-            color: inherit; /* Inherits color from parent */
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: 500;
         }
-        .input-container {
-            display: flex;
-            flex-direction: column; /* Aligns items vertically */
-            align-items: flex-start; /* Aligns items to the left */
-            gap: 10px; /* Adds space between each input */
+        nav ul li a:hover {
+            text-decoration: underline;
         }
-        figure {
-            text-align: center; /* Center-aligns the figure content */
+        main.container {
+            padding: 20px;
+            margin-top: 20px;
         }
-        /* Optional: style for active/current page link */
-        nav ul li a.active {
-            font-weight: bold;
-            color: blue;
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eaeaea;
+        }
+        button {
+            background-color: #007BFF; /* Bootstrap blue */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
     <header class="container">
-        <h1>Texas School Ratings Predictor</h1>
+        <h1>Predictor for Texas School Accountability Ratings</h1>
         <nav>
             <ul>
-                <li><a href="{{ url_for('index') }}" class="{{ 'active' if request.endpoint == 'index' else '' }}">Home</a></li>
-                <li><a href="{{ url_for('visualization') }}" class="{{ 'active' if request.endpoint == 'visualization' else '' }}">Visualization</a></li>
-                <li><a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' else '' }}">About</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/visualization">Visualization</a></li>
+                <li><a href="/about">About</a></li>
             </ul>
         </nav>
     </header>
-    <main class="container">
+    < <main class="container">
+        <form action="/predict" method="post">
+            <div>
+                <label for="total_students">Total Students:</label>
+                <input type="text" id="total_students" name="total_students" required>
+            </div>
+            <div>
+                <label for="attendance_rate">Attendance Rate:</label>
+                <input type="text" id="attendance_rate" name="attendance_rate" required>
+            </div>
+            <div>
+                <label for="approaches_ela">STAAR % ELA Approaches:</label>
+                <input type="text" id="approaches_ela" name="approaches_ela" required>
+            </div>
+            <div>
+                <label for="meets_ela">STAAR % ELA Meets:</label>
+                <input type="text" id="meets_ela" name="meets_ela" required>
+            </div>
+            <div>
+                <label for="masters_ela">STAAR % ELA Masters:</label>
+                <input type="text" id="masters_ela" name="masters_ela" required>
+            </div>
+            <div>
+                <label for="approaches_math">STAAR % Math Approaches:</label>
+                <input type="text" id="approaches_math" name="approaches_math" required>
+            </div>
+            <div>
+                <label for="meets_math">STAAR % Math Meets:</label>
+                <input type="text" id="meets_math" name="meets_math" required>
+            </div>
+            <div>
+                <label for="masters_math">STAAR % Math Masters:</label>
+                <input type="text" id="masters_math" name="masters_math" required>
+            </div>
+            <div>
+                <label for="tested_college">College % Tested:</label>
+                <input type="text" id="tested_college" name="tested_college" required>
+            </div>
+            <div>
+                <label for="criterion_college">College % Above Criterion:</label>
+                <input type="text" id="criterion_college" name="criterion_college" required>
+            </div>
+            <div>
+                <label for="graduation_rate">Graduation Rate:</label>
+                <input type="text" id="graduation_rate" name="graduation_rate" required>
+            </div>
+            <button type="submit">Predict Rating</button>
+        </form>
+        <figure>
+            <img src="{{ url_for('static', filename='images/texed.webp') }}" alt="Image of Texas Education generated by Chat GPT">
+            <figcaption>Texas Education, Image Generated by Chat GPT</figcaption>
+        </figure>
         <section>
-            <h2>Welcome to the Texas School Accountability Predictor</h2>
-            <h3>Enter Data to Predict School Ratings</h3>
-            <form class="input-container" action="{{ url_for('predict') }}" method="post">
-                <div>
-                    <label for="approaches_grade">STAAR: % Approaches Grade Level Standard</label>
-                    <input type="number" id="approaches_grade" name="approaches_grade" placeholder="Enter % value" required>
-                </div>
-                <div>
-                    <label for="meets_grade">STAAR: % Meets Grade Level Standard</label>
-                    <input type="number" id="meets_grade" name="meets_grade" placeholder="Enter % value" required>
-                </div>
-                <div>
-                    <label for="masters_grade">STAAR: % Masters Grade Level Standard</label>
-                    <input type="number" id="masters_grade" name="masters_grade" placeholder="Enter % value" required>
-                </div>
-                <div>
-                    <label for="total_students">Total Students</label>
-                    <input type="number" id="total_students" name="total_students" placeholder="Total number of students" required>
-                </div>
-                <div>
-                    <label for="attendance_rate">Attendance Rate</label>
-                    <input type="number" id="attendance_rate" name="attendance_rate" placeholder="Enter attendance rate" required>
-                </div>
-                <div>
-                    <label for="grad_rate">4-Yr Graduation Rate</label>
-                    <input type="number" id="grad_rate" name="grad_rate" placeholder="Enter graduation rate" required>
-                </div>
-                <div>
-                    <label for="annual_grads">Annual Graduate Count</label>
-                    <input type="number" id="annual_grads" name="annual_grads" placeholder="Enter graduate count" required>
-                </div>
-                <button type="submit">Predict Rating</button>
-            </form>
-            <figure>
-                <img src="{{ url_for('static', filename='images/texed.webp') }}" alt="Image of Texas Education generated by Chat GPT">
-                <figcaption>Texas Education, image generated by Chat GPT</figcaption>
-            </figure>
-            <section>
-                <h3>More Visualizations Here</h3>
-                <p>Space where to add some visualizations to enhance the predictive insights.</p>
-            </section>
+            <h3>Visual Guide to Understanding Texas School Accountability Ratings</h3>
+            <p>Heatmap </p>
         </section>
+        <img src="{{ url_for('static', filename='images/heatmap_labeled.png') }}" alt="Heatmap">
+    </section>
     </main>
     <footer class="container">
-        <small><a href="#">Privacy Policy</a> • <a href="#">Terms of Use</a></small>
-    </footer>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="/static/js/main.js"></script>
-</body>
-</html>
-
+        <small><a href="#">Privacy Policy</a> • <a href="#">Terms of Use
