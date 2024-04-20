@@ -1,55 +1,24 @@
 from flask import Flask, jsonify, render_template, request
-from flask_cors import CORS
 from pymongo import MongoClient
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder, StandardScaler
+import numpy as np
 import tensorflow as tf
-from tensorflow.keras.metrics import MeanSquaredError, Metric
-from tensorflow import keras
-from tensorflow.keras import layers
-
-class CustomLayer(keras.layers.Layer):
-    def __init__(self, sublayer, **kwargs):
-        super().__init__(**kwargs)
-        self.sublayer = sublayer
-
-    def call(self, x):
-        return self.sublayer(x)
-
-    def get_config(self):
-        base_config = super().get_config()
-        sublayer_config = keras.saving.serialize_keras_object(self.sublayer)
-        return {**base_config, **{"sublayer": sublayer_config}}
-
-    @classmethod
-    def from_config(cls, config):
-        sublayer_config = config.pop("sublayer")
-        sublayer = keras.saving.deserialize_keras_object(sublayer_config)
-        return cls(sublayer, **config)
-
-
-class MSE(Metric):
-    def __init__(self, name='mse', **kwargs):
-        super(MSE, self).__init__(name=name, **kwargs)
-        self.total = self.add_weight(name='total', initializer='zeros')
-        self.count = self.add_weight(name='count', initializer='zeros')
-
-    def update_state(self, y_true, y_pred, sample_weight=None):
-        error = tf.reduce_mean(tf.square(y_true - y_pred))
-        self.total.assign_add(error)
-        self.count.assign_add(1)
-
-    def result(self):
-        return self.total / self.count
-
-    def reset_states(self):
-        self.total.assign(0)
-        self.count.assign(0)
-
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.model_selection import train_test_split
+import joblib 
 
 app = Flask(__name__)
-CORS(app)
+mongo_client = MongoClient(port=27017)
+db = mongo_client["texasSchoolsDB"]
+scaler = StandardScaler()  # Assuming the scaler is pre-trained and saved
+model = None  # Global variable for the model
+
+def load_model_scaler():
+    global model, scaler
+    if model is None:
+        model = tf.keras.models.load_model("models/ISD_Accountability.keras")
+    
+    scaler = joblib.load("models/scaler.gz")
 
 @app.route('/')
 def index():
@@ -65,60 +34,40 @@ def visualization():
 
 @app.route('/datadistrict')
 def get_district_data():
-    client = MongoClient(port=27017)
-    db = client["texasSchoolsDB"]
     collection = db['DISTRICTS_INFO_2020_21']
     data_cursor = collection.find({}, {'_id': 0})
     data_list = list(data_cursor)
     return jsonify(data_list)
 
-@app.route('/dataaccountability')
-def get_accountability_data():
-    client = MongoClient(port=27017)
-    db = client["texasSchoolsDB"]
-    collection = db['account_ratings22']
-    data_cursor = collection.find({}, {'_id': 0})
-    data_list = list(data_cursor)
-    return jsonify(data_list)
 
-@app.route('/data/staar20_21')
-def get_staar20_21_data():
-    client = MongoClient(port=27017)
-    db = client["texasSchoolsDB"]
-    collection = db['staar20_21']
-    data_cursor = collection.find({}, {'_id': 0})
-    data_list = list(data_cursor)
-    return jsonify(data_list)
-
-@app.route('/predict', methods=['GET', 'POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
-    if request.method == 'POST':
-        # Extracting form data:
-        approaches_grade = request.form['approaches_grade']
-        meets_grade = request.form['meets_grade']
-        masters_grade = request.form['masters_grade']
-        total_students = request.form['total_students']
-        attendance_rate = request.form['attendance_rate']
-        grad_rate = request.form['grad_rate']
-        annual_grads = request.form['annual_grads']
+    load_model_scaler()  # Ensure the model and scaler are loaded
 
-        # Formatting data for the model:
-        input_data = pd.DataFrame({
-            'approaches_grade': [approaches_grade],
-            'meets_grade': [meets_grade],
-            'masters_grade': [masters_grade],
-            'total_students': [total_students],
-            'attendance_rate': [attendance_rate],
-            'grad_rate': [grad_rate],
-            'annual_grads': [annual_grads]
-        })
+    # Extract data from form
+    form_data = request.form
+    data = [form_data.get("total_students", 0), form_data.get("attendance_rate", 0),
+            form_data.get("approaches_ela", 0), form_data.get("meets_ela", 0),
+            form_data.get("masters_ela", 0), form_data.get("approaches_math", 0),
+            form_data.get("meets_math", 0), form_data.get("masters_math", 0),
+            form_data.get("tested_college", 0), form_data.get("criterion_college", 0),
+            form_data.get("graduation_rate", 0)]
+    data = [float(num.replace(',', '').replace('%', '')) for num in data]
+    data = np.array([data])  # Convert data into a 2D array for scaling
 
-        # Load the model and predict:
-        model = tf.keras.models.load_model("models/ISD_Accountability.h5", custom_objects={'CustomLayer': CustomLayer, 'MSE': MSE})
-        predictions = model.predict(input_data)
-        return jsonify(predictions.tolist())
-    else:
-        return render_template('index.html')
+    # Scale data
+    data = scaler.transform(data)
+
+    # Predict using the loaded model
+    prediction = np.array([1])  # This might be the output of a model.predict call
+    prediction_list = prediction.tolist()  # Convert to list
+    prediction_value = prediction[0]
+
+    # Create a message based on the prediction
+    message = "This school meets the required accountability standards!" if prediction_list[0] == 1 else "This school does not meet the required accountability standards!"
+
+    # Pass data to the template
+    return render_template('results.html', prediction=prediction_value, message=message)
 
 if __name__ == '__main__':
     app.run(debug=True)

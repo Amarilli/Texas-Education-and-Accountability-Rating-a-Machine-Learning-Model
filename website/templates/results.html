@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Prediction Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .result-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .positive-result {
+            background-color: #d4edda; /* light green */
+        }
+        .negative-result {
+            background-color: #f8d7da; /* light red */
+        }
+    </style>
+</head>
+<body>
+    <header class="container">
+        <h1>Prediction Results</h1>
+    </header>
+    <main class="container">
+        <section class="result-container" id="resultSection">
+            <h2>Results</h2>
+            <p><strong>Prediction:</strong> <span id="predictionResult"></span></p>
+            <p><strong>Message:</strong> <span id="messageResult"></span></p>
+        </section>
+        <a href="/" class="button primary">Make Another Prediction</a>
+    </main>
+    <footer class="container">
+        <small>Privacy Policy • Terms of Use</small>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const predictionResult = {{ prediction }};
+            const resultSection = document.getElementById('resultSection');
+            if (predictionResult === 1) {
+                resultSection.classList.add('positive-result');
+            } else {
+                resultSection.classList.add('negative-result');
+            }
+
+            document.getElementById('predictionResult').textContent = predictionResult;
+            document.getElementById('messageResult').textContent = '{{ message }}';
+        });
+    </script>
+</body>
+</html>
+
+
