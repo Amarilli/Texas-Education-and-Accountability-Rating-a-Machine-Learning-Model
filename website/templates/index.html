@@ -11,23 +11,30 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #f4f7f6; /* Subtle background color */
+            background-image: url("{{ url_for('static', filename='images/background_austin.jpeg') }}"); /* Use url_for to reference static image */
+            background-size: cover; /* Ensure the image covers the entire background */
+            background-position: center; /* Center the background image */
+            background-attachment: fixed; /* Makes the background image fixed during scrolling */
         }
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
-            background-color: #fff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 0 20px; /* Maintain padding on the sides */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 100%; /* Extend the width to the full viewport */
         }
         header h1 {
             margin: 0;
-            font-size: 32px;
+            font-size: 32px; /* Larger font size */
+            color: #007bff; /* Bootstrap primary blue for a nicer look */
+            padding: 20px 0; /* Add padding around the text */
         }
         nav ul {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
         nav ul li {
             display: inline;
@@ -42,13 +49,15 @@
             text-decoration: underline;
         }
         main.container {
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
             padding: 20px;
             margin-top: 20px;
+            border-radius: 5px;
         }
         footer {
             text-align: center;
             padding: 10px 0;
-            background-color: #f9f9f9;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
             border-top: 1px solid #eaeaea;
         }
         button {

@@ -7,13 +7,23 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="/static/js/main.js" defer></script>
-    
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-image: url("{{ url_for('static', filename='images/viz_back.jpeg') }}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
         header {
             display: flex;
-            justify-content: space-between; /* Space between title and navigation */
-            align-items: center; /* Align items vertically */
-            padding-bottom: 20px; /* Adds some space below the header */
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.5); /* White semi-transparent background */
         }
         nav ul {
             display: flex;
@@ -22,16 +32,32 @@
             margin: 0;
         }
         nav ul li {
-            margin-left: 10px; /* Adds space between nav items */
+            margin-left: 10px;
         }
         nav ul li a {
-            text-decoration: none; /* Removes underline from links */
-            color: inherit; /* Keeps the link color consistent with the text */
-            font-weight: normal; /* Normal font weight */
+            text-decoration: none;
+            color: black; /* Black text color for visibility against light background */
+            font-weight: normal;
         }
         nav ul li a:hover {
-            color: #007BFF; /* Change color on hover */
-            font-weight: bold; /* Bold on hover */
+            color: #007BFF;
+            font-weight: bold;
+        }
+        main.container {
+            padding: 20px;
+            color: black; /* Black text color for readability */
+        }
+        .content-box {
+            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.8); /* White semi-transparent background */
+            color: black; /* Black text color for visibility */
         }
     </style>
 </head>
@@ -47,7 +73,11 @@
         </nav>
     </header>
     <main class="container">
-        <h2>Data Visualizations</h2>
+        <h2>Tableau Visualizations</h2>
+        <div class="content-box">
+            <p>Explore how the distribution of experienced teachers varies across schools. <br><br> The map showcases the number of teachers with advanced degrees, while the size of the circle represents the number of students per teacher.</p>
+            <p>Does teacher experience correlate with average SAT scores? <br><br> The graph below displays the relationship between teacher experience and average SAT scores. Darker colors represent more experienced teachers, while larger circles indicate higher average scores.</p>
+        </div>
         <div id="visualization">
             <!-- Tableau Dashboard Embed Code -->
             <div class='tableauPlaceholder' id='viz1713492342662' style='position: relative'>
@@ -71,16 +101,12 @@
             <script type='text/javascript'>
                 var divElement = document.getElementById('viz1713492342662');
                 var vizElement = divElement.getElementsByTagName('object')[0];
-                if ( divElement.offsetWidth > 800 ) {
-                    vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';
-                    vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';
-                    vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
-                } else if ( divElement.offsetWidth > 500 ) {
-                    vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';
-                    vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';
+                if (divElement.offsetWidth > 800) {
+                    vizElement.style.width='100%';
                     vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
                 } else {
-                    vizElement.style.width='100%';vizElement.style.height='1227px';
+                    vizElement.style.width='100%';
+                    vizElement.style.height='1227px';
                 }
                 var scriptElement = document.createElement('script');
                 scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
