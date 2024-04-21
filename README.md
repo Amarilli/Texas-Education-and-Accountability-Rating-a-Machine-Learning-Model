@@ -88,7 +88,7 @@ Lastly, we created a scatter plot with a linear regression fit line to quickly e
 
 ## Tableau Visualizations
 
-Also, we created a dashboard on Tableau.
+We also created a dashboard on Tableau.
 
 The following maps show that the student-per-teacher ratio is evenly distributed, and there is a correlation between the number of Non-White Students and Non-White Teachers. However, this doesn’t mean that school 
 districts offer educational diversity for students. Teachers specializing in bilingual & ESL education are not distributed according to the number of bilingual & ESL students. For example, 32.5% of Austin ISD’s students are bilingual & ESL, and 24.4% of its teachers offer bilingual & ESL education. On the contrary, 50.7% of Irving ISD’s students are bilingual & ESL, but only 11.90% of its teachers offer bilingual & ESL education. Speaking two or more languages has great benefits, especially in Texas. The ACS shows that of the 27.3 million people aged five or older living in Texas, 17.7 million speak English at home, 64.9% of all Texans. About 28.5% speak Spanish at home — almost 7.8 million people — and about 6.6% speak another language at home[^2]. 
@@ -100,6 +100,6 @@ speak-a-language-other-than-english-at-home/#:~:text=The%20new%20five%2Dyear
 We tried to identify whether the quality of teachers affects student’s performance. When we look at the chart that visualizes average teachers' salary vs. average SAT scores when teachers’ salaries were 40K - 80K, SAT scores are always between 500 - 1500. When a teacher's salary goes above 100K, some school districts like Highland Park ISD (teachers' average salary is 113.5K and average SAT score is 2,338) seem to offer better education, however school 
 district like Valley View ISD pays teachers 112.7K annually on average and average SAT score is 1,041, which is almost the same as Austin ISD’s average SAT score (Average teacher’s salary: 56.4K, Average SAT score 1,048). From this comparison, I can conclude that a teacher's salary could affect students' performance, however there’s no strong correlation.
 
-![tableau](
+![tableau](https://github.com/Amarilli/project-4/blob/main/Images/Tableau.png)
 
 
