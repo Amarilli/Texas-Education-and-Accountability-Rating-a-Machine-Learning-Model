@@ -13,7 +13,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-image: url("{{ url_for('static', filename='images/viz_back.jpeg') }}");
+            background-image: url("{{ url_for('static', filename='images/viz_backgrd.jpeg') }}");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -23,7 +23,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.5); /* White semi-transparent background */
+            background-color: rgba(255, 255, 255, 0.7); /* White semi-transparent background */
         }
         nav ul {
             display: flex;
@@ -48,7 +48,7 @@
             color: black; /* Black text color for readability */
         }
         .content-box {
-            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
@@ -63,7 +63,7 @@
 </head>
 <body>
     <header class="container">
-        <h1>Visualization</h1>
+        <h1>Visualizations</h1>
         <nav>
             <ul>
                 <li><a href="{{ url_for('index') }}">Home</a></li>
@@ -73,9 +73,9 @@
         </nav>
     </header>
     <main class="container">
-        <h2>Tableau Visualizations</h2>
+        <h2>Tableau</h2>
         <div class="content-box">
-            <p>Explore how the distribution of experienced teachers varies across schools. <br><br> The map showcases the number of teachers with advanced degrees, while the size of the circle represents the number of students per teacher.</p>
+            <p> Explore how the distribution of experienced teachers varies across schools.<br><br>The following map showcases the number of teachers with advanced degrees, while the size of the circle represents the number of students per teacher.</p>
             <p>Does teacher experience correlate with average SAT scores? <br><br> The graph below displays the relationship between teacher experience and average SAT scores. Darker colors represent more experienced teachers, while larger circles indicate higher average scores.</p>
         </div>
         <div id="visualization">
