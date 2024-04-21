@@ -31,10 +31,22 @@ Our team is undertaking a challenging task: investigating the feasibility of pre
     Mariah: Machine Learning Model.
     James: .
     Kelsey: MongoDB.
-    Amarilli: Website, README. 
+    Amarilli: Website, visualization, README. 
     Hisako: Tableau's visualizations.
 
 
 ### Development
 
 A
+
+![accountability](https://github.com/Amarilli/project-4/blob/main/Images/accountability_freq.png)
+
+![attendance](https://github.com/Amarilli/project-4/blob/main/Images/acc_attendance.png)
+
+![boxplot](https://github.com/Amarilli/project-4/blob/main/Images/boxplot.png)
+
+![heatmap](https://github.com/Amarilli/project-4/blob/main/website/static/images/heatmap_labeled.png)
+
+![correlation](https://github.com/Amarilli/project-4/blob/main/Images/correlation.png)
+
+
