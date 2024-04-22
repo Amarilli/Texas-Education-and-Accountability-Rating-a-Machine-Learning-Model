@@ -49,18 +49,7 @@ To achieve our goal, we chose the most recent dataset available about Texas Dist
 
 ### The Model
 
-We built a neural network machine learning model that can predict the accountability rating of every school (district and charter) in Texas.
-
-### The predictor
-
-![predictor](https://github.com/Amarilli/project-4/blob/main/Images/predictor.png)
-
-We built a predictor using `pymongo` and `Flask`.
-
-Upon selecting the relevant categories for our Machine Learning Model, the insertion of values enables the predictor to forecast the accountability rating with an accuracy of 78%.
-
-The categories are:
-
+We built a neural network machine learning model that can predict the accountability rating of every school (district and charter) in Texas. The target for the model was the District Accountability Ratings and the features were: 
 - Total Students
 - Attendance Rate
 - STAAR % ELA/READING at approaches grade level standard or above
@@ -72,6 +61,24 @@ The categories are:
 - College Admissions % Tested
 - College Admissions % at/above criterion
 - Graduation Rate
+
+The model summary :
+![image](https://github.com/Amarilli/project-4/assets/148505481/b0573026-3605-494a-aecd-9244fa797684)
+
+
+The evaluations of the model and the classification report tell us that the model was 79% accurate in predicting the accountability ratings of schools.
+
+![image](https://github.com/Amarilli/project-4/assets/148505481/621687e0-774f-425e-9733-effa9450a94f)
+
+
+
+### The predictor
+
+![predictor](https://github.com/Amarilli/project-4/blob/main/Images/predictor.png)
+
+We built a predictor using `pymongo` and `Flask`.
+
+Upon selecting the relevant categories for our Machine Learning Model, the insertion of thsoe same features enables the predictor to forecast the accountability rating with an accuracy of 79% just like the model.
 
 Example of prediction A:
 
