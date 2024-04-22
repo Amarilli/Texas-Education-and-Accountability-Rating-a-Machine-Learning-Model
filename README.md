@@ -80,6 +80,8 @@ Example of prediction A:
 Example of prediction B:
 ![pred B](https://github.com/Amarilli/project-4/blob/main/Images/rating_b.png)
 
+The predictor runs locally using `gunicorn` and its complete set up is visible here: [tar-predictor](https://github.com/Amarilli/tar-predictor)
+
 
 ### A Visual Analysis of the Weight of Accountability Rating
 
