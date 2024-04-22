@@ -49,16 +49,45 @@ To achieve our goal, we chose the most recent dataset available about Texas Dist
 
 ### The Model
 
-Our model
+We built a neural network machine learning model that is able to predict the accountability rating of every school (district and charter) in Texas.
+
+### The predictor
+
+![predictor](https://github.com/Amarilli/project-4/blob/main/Images/predictor.png)
+
+We built a predictor using `pymongo` and `Flask`.
+
+Upon selecting the relevant categories for our Machine Learning Model, the insertion of values enables the predictor to forecast the accountability rating with an accuracy of 78%.
+
+The categories are:
+
+- Total Students
+- Attendance Rate
+- STAAR % ELA/READING at approaches grade level standard or above
+- STAAR % ELA/READING at meets grade level standard or above
+- STAAR % ELA/READING at masters grade level standard or above
+- STAAR % Mathematics at approaches grade level standard or above
+- STAAR % Mathematics at meets grade level standard or above
+- STAAR % Mathematics at masters grade level standard or above
+- College Admissions % Tested
+- College Admissions % at/above criterion
+- Graduation Rate
+
+Example of prediction A:
+
+![pred a](https://github.com/Amarilli/project-4/blob/main/Images/rating_a.png)
+
+Example of prediction B:
+![pred B](https://github.com/Amarilli/project-4/blob/main/Images/rating_b.png)
 
 
 ### A Visual Analysis of the Weight of Accountability Rating
 
 Several visualizations were created using Seaborn and Matplotlib to demonstrate the correlation between the Accountability Rating and various factors.
 
-In 2021-2022 the majority of the schools in Texas are rated A, followed by B, and lastly, C
+In 2021-2022, most of the schools in Texas are rated A, followed by B, and lastly, C.
 
-where:
+Where:
 
 - A – Exemplary performance
 - B – Recognized performance
