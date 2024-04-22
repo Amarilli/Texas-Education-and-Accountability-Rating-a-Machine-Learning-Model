@@ -6,26 +6,61 @@
     <title>Info Page</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-image: url("{{ url_for('static', filename='images/about_back.jpeg') }}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
         header {
             display: flex;
-            justify-content: space-between; /* Space between title and navigation */
-            align-items: center; /* Align items vertically */
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
         }
         nav ul {
             display: flex;
             list-style: none;
             padding: 0;
+            margin: 0;
         }
         nav ul li {
-            padding: 0 10px; /* Spacing between navigation items */
+            margin-left: 10px;
         }
         nav ul li a {
-            text-decoration: none; /* Optional: removes underline from links */
+            text-decoration: none;
+            color: black; /* Black text color for visibility against light background */
+            font-weight: normal;
         }
-        /* Optional: style for active/current page link */
-        nav ul li a.active {
+        nav ul li a:hover {
+            color: #007BFF;
             font-weight: bold;
-            color: blue;
+        }
+        main.container {
+            padding: 20px;
+            color: black; /* Black text color for readability */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for each section */
+        }
+        .content-box {
+            background-color: rgba(255, 255, 255, 0.9); /* More opaque white background */
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: justify; /* Justify text for better alignment */
+        }
+        .center-text {
+            text-align: center; /* Center-align text */
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            color: black; /* Black text color for visibility */
         }
     </style>
 </head>
@@ -34,27 +69,35 @@
         <h1>Project Overview</h1>
         <nav>
             <ul>
-                <li><a href="{{ url_for('index') }}" class="{{ 'active' if request.path == '/' else '' }}">Home</a></li>
-                <li><a href="{{ url_for('visualization') }}" class="{{ 'active' if request.path == '/visualization' else '' }}">Visualization</a></li>
-                <li><a href="{{ url_for('about') }}" class="{{ 'active' if request.path == '/about' else '' }}">About</a></li>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('visualization') }}">Visualization</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
             </ul>
         </nav>
     </header>
     <main class="container">
-        <section>
+        <div class="content-box">
             <h2>Question to answer</h2>
-            <p>Can a school's accountability rating be predicted?<br>
+            <p>Can a school's accountability rating be predicted? This is the third part of our team project focused on Texas ISDs.We aim to develop a Machine Learning Model to predict a school's accountability rating. The Texas Education Agency (TEA) assesses public schools and districts based on state accountability requirements, accrediting public schools in Texas at the district level for grades K-12. The Texas Administrative Code (TAC) outlines the rules for accrediting school districts, specifying four statuses: <b>Accredited</b>, <b>Accredited-Warned</b>, <b>Accredited-Probation</b>, and <b>Not Accredited-Revoked</b>.
+                <br>The TAC rules encompass accreditation standards and sanctions, including definitions, purpose, and oversight appointments.<br>Our team is undertaking a challenging task: investigating the feasibility of predicting a school's accountability rating using a custom MongoDB database and Machine Learning. This complex and intricate endeavor requires our collective expertise and dedication.<br></p>
+        </div>
+        <div class="content-box center-text">
+            <h2>Team members:</h2>
+            <p>James Draper<br>Kelsey Kraft<br>Mariah McLelan<br>Amarilli Novel<br>Hisako Yamanaka</p>
+        </div>
+        <div class="content-box">
+            <h2>The importance of Accountability Rating</h2>
+            <p>Texas public schools, charters, and districts receive academic accountability ratings on an annual basis The ratings consider student performance on state standardized tests, graduation rates, and readiness for college, careers, and the military. They also evaluate school progress, student achievement, and whether the schools are closing achievement gaps among different student groups.
 
-                <br>This is the third part of our team project focused on Texas ISDs. <br>
-                We aim to develop a Machine Learning Model to predict a school's accountability rating. <br>
-                The Texas Education Agency (TEA) assesses public schools and districts based on state accountability requirements, accrediting public schools in Texas at the district level for grades K-12. <br>
-                The Texas Administrative Code (TAC) outlines the rules for accrediting school districts, specifying four statuses: Accredited, Accredited-Warned, Accredited-Probation, and Not Accredited-Revoked. <br>
-                The TAC rules encompass accreditation standards and sanctions, including definitions, purpose, and oversight appointments.<br>
+                We aim to construct a precise, user-friendly machine-learning model to forecast accountability ratings. We intend to develop a model that can accurately determine the degree of responsibility in a manner that is easily comprehensible to our target audience. Our focus is on building a model that utilizes the latest advancements in machine learning and adhering to established standards of accuracy and reliability. We are confident that our proposed model will prove to be an important contribution to the field of accountability rating prediction.
                 
-                Our team is undertaking a challenging task: investigating the feasibility of predicting a school's accountability rating using a custom MongoDB database and Machine Learning. <br>
-                This complex and intricate endeavor requires our collective expertise and dedication.</p>
+                To achieve our goal, we chose the most recent dataset available about Texas District and Charter Detail Data, based on data from 2021-2022, and decided to use deep learning and neural network machine learning.<br>
+            </p>
+        </div>
+        <div class="content-box">
             <img src="{{ url_for('static', filename='images/mltexas.jpeg') }}" alt="ML and Texas according to ChatGPT">
-        </section>
+            <figcaption>Texas Education and Machine Learning, Image Generated by Chat GPT</figcaption>
+        </div>
     </main>
     <footer class="container">
         <small>© 2024 All rights reserved.</small>
