@@ -11,25 +11,25 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-image: url("{{ url_for('static', filename='images/background_austin.jpeg') }}"); /* Use url_for to reference static image */
-            background-size: cover; /* Ensure the image covers the entire background */
-            background-position: center; /* Center the background image */
-            background-attachment: fixed; /* Makes the background image fixed during scrolling */
+            background-image: url("{{ url_for('static', filename='images/background_austin.jpeg') }}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px; /* Maintain padding on the sides */
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+            padding: 0 20px;
+            background-color: rgba(255, 255, 255, 0.8);
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            width: 100%; /* Extend the width to the full viewport */
+            width: 100%;
         }
         header h1 {
             margin: 0;
-            font-size: 32px; /* Larger font size */
-            color: #007bff; /* Bootstrap primary blue for a nicer look */
-            padding: 20px 0; /* Add padding around the text */
+            font-size: 32px;
+            color: #007bff;
+            padding: 20px 0;
         }
         nav ul {
             list-style: none;
@@ -49,7 +49,7 @@
             text-decoration: underline;
         }
         main.container {
-            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 20px;
             margin-top: 20px;
             border-radius: 5px;
@@ -57,11 +57,11 @@
         footer {
             text-align: center;
             padding: 10px 0;
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+            background-color: rgba(255, 255, 255, 0.8);
             border-top: 1px solid #eaeaea;
         }
         button {
-            background-color: #007BFF; /* Bootstrap blue */
+            background-color: #007BFF;
             color: white;
             padding: 10px 15px;
             border: none;
@@ -79,6 +79,13 @@
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
+        }
+        /* Add CSS for spacing between figures */
+        figure {
+            margin-bottom: 80px; 
+        }
+        figcaption {
+            margin-bottom: 80px; 
         }
     </style>
 </head>
@@ -104,35 +111,35 @@
                 <input type="text" id="attendance_rate" name="attendance_rate" required>
             </div>
             <div>
-                <label for="approaches_ela">STAAR % ELA Approaches:</label>
+                <label for="approaches_ela">STAAR % ELA/Reading Approaches Grade Level Standard:</label>
                 <input type="text" id="approaches_ela" name="approaches_ela" required>
             </div>
             <div>
-                <label for="meets_ela">STAAR % ELA Meets:</label>
+                <label for="meets_ela">STAAR % ELA Meets Grade Level Standard:</label>
                 <input type="text" id="meets_ela" name="meets_ela" required>
             </div>
             <div>
-                <label for="masters_ela">STAAR % ELA Masters:</label>
+                <label for="masters_ela">STAAR % ELA Masters Grade Level Standard:</label>
                 <input type="text" id="masters_ela" name="masters_ela" required>
             </div>
             <div>
-                <label for="approaches_math">STAAR % Math Approaches:</label>
+                <label for="approaches_math">STAAR % Math Approaches Grade Level Standard:</label>
                 <input type="text" id="approaches_math" name="approaches_math" required>
             </div>
             <div>
-                <label for="meets_math">STAAR % Math Meets:</label>
+                <label for="meets_math">STAAR % Math Meets Grade Level Standard:</label>
                 <input type="text" id="meets_math" name="meets_math" required>
             </div>
             <div>
-                <label for="masters_math">STAAR % Math Masters:</label>
+                <label for="masters_math">STAAR % Math Masters Grade Level Standard:</label>
                 <input type="text" id="masters_math" name="masters_math" required>
             </div>
             <div>
-                <label for="tested_college">College % Tested:</label>
+                <label for="tested_college">College Admissions % Tested:</label>
                 <input type="text" id="tested_college" name="tested_college" required>
             </div>
             <div>
-                <label for="criterion_college">College % Above Criterion:</label>
+                <label for="criterion_college">College Admissions % Above Criterion:</label>
                 <input type="text" id="criterion_college" name="criterion_college" required>
             </div>
             <div>
@@ -146,10 +153,28 @@
             <figcaption>Texas Education, Image Generated by Chat GPT</figcaption>
         </figure>
         <section>
-            <h3>Visual Guide to Understanding Texas School Accountability Ratings</h3>
-            <p>Heatmap </p>
+            <h3>A Visual Analysis of the Weight of Accountability Rating</h3>
+            <p> Several visualizations were created using Seaborn and Matplotlib to demonstrate the correlation between the Accountability Rating and various factors.
+            <br><br></p>In 2021-2022 the majority of the schools in Texas are rated A, followed by B, and lastly C<br>
+
+            where:
+            <br>
+            - A : Exemplary performance <br>
+            - B : Recognized performance <br>
+            - C : Acceptable performance<br>
+            - D : In need of improvement<br>
+            - F : Unacceptable performance<br>
         </section>
+        <img src="{{ url_for('static', filename='images/accountability_freq.png') }}" alt="Bar Chart">
+        <figcaption>Simple bar char displaying the frequency of A(0), B(1), C(2)</figcaption>
         <img src="{{ url_for('static', filename='images/heatmap_labeled.png') }}" alt="Heatmap">
+        <figcaption>Heatmap using the data frame we created for our model<br><br></figcaption>
+        <img src="{{ url_for('static', filename='images/acc_attendance.png') }}" alt="Violin Plot">
+        <figcaption>Violin Plot demonstrating how Accountability Rating and Attendance Rate are connected</figcaption>
+        <img src="{{ url_for('static', filename='images/boxplot.png') }}" alt="Boxplot">
+        <figcaption>Boxplot showcasing the correlation between test scores (STAAR) and accountability rating</figcaption>
+        <img src="{{ url_for('static', filename='images/correlation.png') }}" alt="Scatterplot">
+        <figcaption>Scatter plot with a linear regression fit line to quickly evaluate how two variables (attendance rate and graduation rate) correlate and whether the trend is consistent across different accountability ratings.</figcaption>
     </section>
     </main>
     <footer class="container">
