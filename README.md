@@ -49,7 +49,7 @@ To achieve our goal, we chose the most recent dataset available about Texas Dist
 
 ### The Model
 
-We built a neural network machine learning model that is able to predict the accountability rating of every school (district and charter) in Texas.
+We built a neural network machine learning model that can predict the accountability rating of every school (district and charter) in Texas.
 
 ### The predictor
 
@@ -107,11 +107,12 @@ The boxplot showcases the correlation between test scores (STAAR) and accountabi
 
 ![boxplot](https://github.com/Amarilli/project-4/blob/main/Images/boxplot.png)
 
-The following heatmap uses the data frame we created for our model and demonstrates the correlation between Accountability Rating and
+The following heatmap uses the data frame we created for our model and demonstrates the correlation between Accountability Rating and all the categories used for our machine model comparing data from two different school years
+: 2020-2021 and 2021-2022.
 
 ![heatmap](https://github.com/Amarilli/project-4/blob/main/website/static/images/heatmap_labeled.png)
 
-Lastly, we created a scatter plot with a linear regression fit line to quickly evaluate how two variables (attendance rate and graduation rate) correlate and whether the trend is consistent across different accountability ratings.
+Lastly, we created a scatter plot with a linear regression fit line to quickly evaluate how two variables (attendance and graduation rates) correlate and whether the trend is consistent across different accountability ratings.
 
 ![correlation](https://github.com/Amarilli/project-4/blob/main/Images/correlation.png)
 
@@ -125,7 +126,7 @@ districts offer educational diversity for students. Teachers specializing in bil
 [^2]: For more info [Kxan](https://www.kxan.com/news/texas/census-bureau-estimates-1-in-3-texans-speak-a-language-other-than-english-at-home/#:~:text=The%20new%20five%2Dyear%20ACS,speak%20another%20language%20at%20home)
 
 We tried to identify whether the quality of teachers affects student’s performance. When we look at the chart that visualizes average teachers' salary vs. average SAT scores when teachers’ salaries were 40K - 80K, SAT scores are always between 500 - 1500. When a teacher's salary goes above 100K, some school districts like Highland Park ISD (teachers' average salary is 113.5K and average SAT score is 2,338) seem to offer better education, however school 
-district like Valley View ISD pays teachers 112.7K annually on average and average SAT score is 1,041, which is almost the same as Austin ISD’s average SAT score (Average teacher’s salary: 56.4K, Average SAT score 1,048). From this comparison, I can conclude that a teacher's salary could affect students' performance, however there’s no strong correlation.
+district like Valley View ISD pays teachers 112.7K annually on average and average SAT score is 1,041, which is almost the same as Austin ISD’s average SAT score (Average teacher’s salary: 56.4K, Average SAT score 1,048). From this comparison, I can conclude that a teacher's salary could affect students' performance however there’s no strong correlation.
 
 ![tableau](https://github.com/Amarilli/project-4/blob/main/Images/Tableau.png)
 
