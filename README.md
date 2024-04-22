@@ -78,7 +78,7 @@ The evaluations of the model and the classification report tell us that the mode
 
 We built a predictor using `pymongo` and `Flask`.
 
-Upon selecting the relevant categories for our Machine Learning Model, the insertion of thsoe same features enables the predictor to forecast the accountability rating with an accuracy of 79% just like the model.
+Upon selecting the relevant categories for our Machine Learning Model, the insertion of those same features enables the predictor to forecast the accountability rating with an accuracy of 79%, just like the model.
 
 Example of prediction A:
 
