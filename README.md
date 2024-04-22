@@ -63,7 +63,7 @@ We built a neural network machine learning model that can predict the accountabi
 - Graduation Rate
 
 The model summary :
-![image](https://github.com/Amarilli/project-4/assets/148505481/d21259a9-d3a6-413c-9ed7-1076afbd2a56)
+![image](https://github.com/Amarilli/project-4/assets/148505481/e93c383f-eae2-4fb9-bdf5-4030302da633)
 
 
 The evaluations of the model and the classification report tell us that the model was 79% accurate in predicting the accountability ratings of schools.
