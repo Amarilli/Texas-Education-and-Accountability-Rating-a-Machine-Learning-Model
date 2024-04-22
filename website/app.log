@@ -1,0 +1,6 @@
+2024-04-20 15:17:06,050:WARNING: * Debugger is active!
+2024-04-20 15:17:06,064:INFO: * Debugger PIN: 420-614-816
+2024-04-20 15:18:24,365:INFO: * Detected change in '/Users/amarillinovel/Desktop/project-4/website/app.py', reloading
+[2024-04-20 15:18:30,368] WARNING in _internal:  * Debugger is active!
+[2024-04-20 15:18:30,384] INFO in _internal:  * Debugger PIN: 420-614-816
+[2024-04-20 15:46:29,424] INFO in _internal:  * Detected change in '/Users/amarillinovel/Desktop/project-4/website/app.py', reloading
