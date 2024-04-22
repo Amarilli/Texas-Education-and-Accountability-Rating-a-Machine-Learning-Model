@@ -33,7 +33,7 @@ Our team is undertaking a challenging task: investigating the feasibility of pre
 ### Break Down of Task:
 
     Mariah: Machine Learning Model.
-    James: .
+    James: Deployment of the Flask App.
     Kelsey: MongoDB.
     Amarilli: Website, visualization, README. 
     Hisako: Tableau's visualizations.
