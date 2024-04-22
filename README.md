@@ -49,7 +49,8 @@ To achieve our goal, we chose the most recent dataset available about Texas Dist
 
 ### The Model
 
-We built a neural network machine learning model that can predict the accountability rating of every school (district and charter) in Texas. The target for the model was the District Accountability Ratings and the features were: 
+We built a neural network machine learning model that can predict the accountability rating of every school (district and charter) in Texas. The target for the model was the District Accountability Ratings, and the features were: 
+
 - Total Students
 - Attendance Rate
 - STAAR % ELA/READING at approaches grade level standard or above
@@ -62,11 +63,14 @@ We built a neural network machine learning model that can predict the accountabi
 - College Admissions % at/above criterion
 - Graduation Rate
 
+
 The model summary :
+
 ![image](https://github.com/Amarilli/project-4/assets/148505481/e93c383f-eae2-4fb9-bdf5-4030302da633)
 
 
 The evaluations of the model and the classification report tell us that the model was 79% accurate in predicting the accountability ratings of schools.
+
 
 ![image](https://github.com/Amarilli/project-4/assets/148505481/621687e0-774f-425e-9733-effa9450a94f)
 
